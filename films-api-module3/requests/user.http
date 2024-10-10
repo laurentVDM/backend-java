@@ -1,0 +1,16 @@
+### Login the default user
+POST {{baseUrl}}/auths/login
+Content-Type: application/json
+
+{
+  "login":"james",
+  "password":"password"
+}
+
+> {%
+  client.global.set("jamesToken", response.body.token);
+%}
+
+### Read All users
+GET {{baseUrl}}/users
+Authorization: {{jamesToken}}
